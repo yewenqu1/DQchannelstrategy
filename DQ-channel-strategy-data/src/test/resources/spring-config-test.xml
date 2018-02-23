@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/data/jpa
+           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
+       default-lazy-init="true">
+
+    <bean id="print" class="cn.box51.bld.BeanPrint"></bean>
+    <context:property-placeholder ignore-unresolvable="true"
+                                  location="classpath*:config/test.config.properties"/>
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+    <context:component-scan base-package="cn.box51.bld"/>
+    <!-- 使用cglib进行动态代理 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- 支持注解方式声明式事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+    <!-- dao -->
+    <jpa:repositories base-package="cn.box51.bld.dao" repository-impl-postfix="Impl"
+                      entity-manager-factory-ref="entityManagerFactory" transaction-manager-ref="transactionManager"/>
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+    <!-- 实体管理器 -->
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="mysqlDataSource" />
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <property name="packagesToScan">
+            <list>
+                <value>cn.box51.bld</value>
+            </list>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+                <prop key="hibernate.show_sql">false</prop>
+                <prop key="hibernate.show_format">false</prop>
+                <prop key="hibernate.query.substitutions">true 1, false 0</prop>
+                <prop key="hibernate.default_batch_fetch_size">4</prop>
+                <prop key="current_session_context_class">thread</prop>
+                <!-- create : 删除上次的表，新建最新的-->
+                <!-- update : 第一次加载是件建表，之后加载根据实体类自动更新表结构，不删除数据-->
+                <!-- create-drop : 每次加载建表，但是sessionFactor一关闭，表自动删除-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--指定实现JPA的适配器-->
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+    </bean>
+    <!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
+    <bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <!-- Connection Info -->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <!-- Connection Pooling Info -->
+        <property name="maxActive" value="${dbcp.maxActive}"/>
+        <property name="maxIdle" value="${dbcp.maxIdle}"/>
+    </bean>
+
+</beans>

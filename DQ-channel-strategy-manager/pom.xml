@@ -15,7 +15,7 @@
 
         <dependency>
             <groupId>bld</groupId>
-            <artifactId>DQ-channel-strategy-db-connection</artifactId>
+            <artifactId>DQ-channel-strategy-data</artifactId>
             <version>1.0.0</version>
         </dependency>
 

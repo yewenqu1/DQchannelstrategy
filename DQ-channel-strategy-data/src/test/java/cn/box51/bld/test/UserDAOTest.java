@@ -1,6 +1,7 @@
 package cn.box51.bld.test;
 
-import org.apache.commons.dbcp.BasicDataSource;
+import cn.box51.bld.dao.UserDAO;
+import cn.box51.bld.entity.PUser;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -8,19 +9,21 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 /**
- * Created by wq on 2018/1/16.
+ * Created by wq on 2018/2/12.
  */
-
-@ActiveProfiles("deve")
+@ActiveProfiles("test")
 @ContextConfiguration(locations = {"classpath:spring-config-test.xml"})
-public class Connection extends AbstractJUnit4SpringContextTests{
+public class UserDAOTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
-    BasicDataSource dataSource;
+    private UserDAO userDAO;
 
     @Test
-    public void test(){
-      System.out.println(dataSource.getUrl());
-  }
+    public  void i(){
+        PUser pUser = new PUser();
+        pUser.setName("ywq");
+        pUser.setSexy("1");
+        userDAO.save(pUser);
+    }
 
 }
