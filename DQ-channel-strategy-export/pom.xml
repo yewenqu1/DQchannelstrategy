@@ -11,6 +11,7 @@
 
     <artifactId>DQ-channel-strategy-export</artifactId>
     <packaging>war</packaging>
+    <description>对外接口项目</description>
 
     <dependencies>
 

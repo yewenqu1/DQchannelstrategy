@@ -12,9 +12,6 @@
     <description>基础数据对象模块</description>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
+
     </dependencies>
 </project>

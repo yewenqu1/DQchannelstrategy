@@ -1,0 +1,229 @@
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+
+    <div id="sidebar" class="sidebar responsive ace-save-state">#parse("/layout/layout-left.vm")</div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">首页</a>
+                    </li>
+
+                    <li>
+                        <a href="#">查询管理</a>
+                    </li>
+                    <li class="active">用户标签管理</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+
+            <div class="page-content">
+                <div class="col-sm-8">
+                    <table class="col-sm-12 tags-table">
+                        <tr style="border-bottom: 1px solid #666;">
+                            <td width="10%"><label>
+                                <input name="form-field-checkbox" type="checkbox" class="ace tags-check-all">
+                                <span class="lbl">全选</span>
+                            </label></td>
+                            <td width="80%" style="padding: 10px;">
+                                <button class="btn btn-light" id="up-tags" data-toggle="modal" href="#tags-modal">打标签</button>
+                                <button class="btn btn-light" id="black-tags">加入黑名单</button>
+                            </td>
+                            <td width="10%" style="padding: 10px;">
+
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #666;">
+                            <td><label>
+                                <input name="form-field-checkbox" type="checkbox" class="ace tags-checkbox">
+                                <span class="lbl"></span>
+                            </label></td>
+                            <td width="50%">
+                                <img src="/assets/images/avatars/user.jpg" style="float:left;margin-right: 5px;"/>
+                                <div style="display: inline-block">
+                                    ywq<br/>
+                                   无标签
+                                </div>
+
+                            </td>
+                            <td style="padding: 5px;">
+                                <button class="btn btn-primary" data-toggle="modal" href="#beizhu-modal">修改备注</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label>
+                                <input name="form-field-checkbox" type="checkbox" class="ace tags-checkbox">
+                                <span class="lbl"></span>
+                            </label></td>
+                            <td width="50%">
+                                <img src="/assets/images/avatars/user.jpg" style="float:left;margin-right: 5px;"/>
+                                <div style="display: inline-block">
+                                    鹏飞<br/>
+                                    无标签
+                                </div>
+                            </td>
+                            <td style="padding: 5px;">
+                                <button class="btn btn-primary" data-toggle="modal" href="#beizhu-modal">修改备注</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-sm-4">
+                    <table class="col-sm-12">
+                        <tr>
+                            <td><button class="btn btn-primary" data-toggle="modal" href="#new-tags-modal">
+                                <i class="ace-icon glyphicon glyphicon-plus align-top bigger-125"></i>
+                                新建标签</button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <ul>
+                                    <li>全部用户（6512367人）</li>
+                                    <li>测试组（10人）</li>
+                                    <li>星标用户（10人）</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+
+    #parse("/layout/layout-footer.vm")
+
+
+    <!--新建标签-弹框-->
+    <div class="modal fade" id="new-tags-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新建标签
+                    </h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="col-md-12">
+                        <input type="text" id="form-field-1" placeholder="标签" class="col-md-12 ">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+    <!--打标签-弹框-->
+    <div class="modal fade" id="tags-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body clearfix">
+                    <div class="col-md-12">
+                        <label>
+                            <input name="form-field-checkbox" type="checkbox" class="ace">
+                            <span class="lbl"> 测试用户</span>
+                        </label>
+                        <label>
+                            <input name="form-field-checkbox" type="checkbox" class="ace">
+                            <span class="lbl"> 星级用户</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+    <!--修改备注-弹框-->
+    <div class="modal fade" id="beizhu-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        备注名称
+                    </h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="col-md-12">
+                        <input type="text" id="form-field-1" placeholder="备注" class="col-md-12 ">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+
+    <!-- inline scripts related to this page -->
+    <script>
+        $(function () {
+            //全选
+            $('.tags-check-all').on('click',function () {
+                var isChecked = $('.tags-check-all').is(':checked');
+                if(isChecked){
+                    $('.tags-table').find('input').each(function () {
+                        $(this).prop("checked",true);
+                    });
+                }else{
+                    $('.tags-table').find('input').each(function () {
+                        $(this).prop("checked",false);
+                    });
+                }
+                taggleShowBTN(isChecked);
+            });
+
+            $('.tags-checkbox').change(function () {
+                var hasChecked = false;
+                $('.tags-table').find('input').each(function () {
+                     if($(this).is(":checked")){
+                         hasChecked = true;
+                     }
+                });
+                taggleShowBTN(hasChecked);
+            });
+        })
+
+
+        function taggleShowBTN(hasChecked){
+            if(hasChecked){
+                $('#up-tags').addClass('btn-primary').removeClass('btn-light');
+                $('#black-tags').addClass('btn-primary').removeClass('btn-light');
+            }else{
+                $('#up-tags').removeClass('btn-primary').addClass('btn-light');
+                $('#black-tags').removeClass('btn-primary').addClass('btn-light');
+            }
+        }
+
+    </script>

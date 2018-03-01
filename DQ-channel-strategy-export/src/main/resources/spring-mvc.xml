@@ -33,12 +33,14 @@
         <bean class="com.box.common.security.LoginInterceptor" />
          <bean class="com.box.common.security.AccessConditionInterceptor" />
 	</mvc:interceptors>-->
-	
-	<!-- 定义JSP --> 
+
+
+
+	<!-- 定义JSP-->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/pages/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
-	
+
 	<!-- end -->
 </beans>

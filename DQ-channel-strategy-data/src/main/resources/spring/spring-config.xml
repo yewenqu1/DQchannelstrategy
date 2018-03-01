@@ -17,7 +17,7 @@
            http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
        default-lazy-init="true">
 
-
+    <bean id="print" class="cn.box51.bld.BeanPrint"></bean>
     <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
     <context:component-scan base-package="cn.box51.bld"/>
     <!-- 使用cglib进行动态代理 -->
@@ -70,8 +70,8 @@
         <property name="password" value="${jdbc.password}"/>
         <property name="defaultAutoCommit" value="false"/>
         <!-- Connection Pooling Info -->
-        <property name="maxActive" value="${dbcp.maxActive}"/>
-        <property name="maxIdle" value="${dbcp.maxIdle}"/>
+        <property name="maxActive" value="40"/>
+        <property name="maxIdle" value="5"/>
     </bean>
 
     <!-- 事务 -->
@@ -93,16 +93,16 @@
         <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
     </aop:config>
 
-
     <!-- 测试环境-->
     <beans profile="test">
-        <bean id="print" class="cn.box51.bld.BeanPrint"></bean>
         <context:property-placeholder ignore-unresolvable="true"
                                       location="classpath*:config/test.config.properties"/>
     </beans>
+
+
     <!--开发环境-->
     <beans profile="deve">
-        <bean id="print" class="cn.box51.bld.BeanPrint"></bean>
+
         <context:property-placeholder ignore-unresolvable="true"
                                       location="classpath*:config/deve.config.properties"/>
     </beans>

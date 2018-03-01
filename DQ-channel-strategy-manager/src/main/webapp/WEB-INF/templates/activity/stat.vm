@@ -1,0 +1,161 @@
+#set ($base = $rc.contextPath)
+<script type="text/javascript">
+    try {
+        ace.settings.loadState('main-container')
+    } catch (e) {
+    }
+</script>
+<link rel="stylesheet" href="$base/assets/css/bootstrap-datepicker3.min.css"/>
+<link rel="stylesheet" href="$base/assets/css/bootstrap-timepicker.min.css"/>
+<link rel="stylesheet" href="$base/assets/css/daterangepicker.min.css"/>
+<link rel="stylesheet" href="$base/assets/css/bootstrap-datetimepicker.min.css"/>
+
+<div id="sidebar" class="sidebar responsive ace-save-state">
+    #parse("$base/layout/layout-left.vm")
+</div>
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">查询管理</a>
+                </li>
+                <li class="active">用户信息查询</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form class="form-inline">
+                            <span class="grey bigger-110">查询条件</span>
+                            <input type="text" class="input-small" placeholder="活动名称">
+                            <input type="text" class="input-small" placeholder="用户号码">
+                            <div class="input-group">
+                                <input class="form-control date-picker" id="id-date-picker-1" type="text"
+                                       data-date-format="dd-mm-yyyy" placeholder="开始日期"/>
+                                <span class="input-group-addon">
+									<i class="fa fa-calendar bigger-110"></i>
+								</span>
+                            </div>
+                            <div class="input-group">
+                                <input class="form-control date-picker" id="id-date-picker-1" type="text"
+                                       data-date-format="dd-mm-yyyy" placeholder="结束日期"/>
+                                <span class="input-group-addon">
+									<i class="fa fa-calendar bigger-110"></i>
+								</span>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm">
+                                查询
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!--内容 部分-->
+            <div class="clearfix">
+                <div class="pull-right tableTools-container"></div>
+            </div>
+            <div>
+
+                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>活动名称</th>
+                        <th>微信OPENID</th>
+                        <th>用户号码</th>
+                        <th>访问时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>春节流量包</td>
+                        <td>zjdx</td>
+                        <td>18069873011</td>
+                        <td>2018-03-01 18:23:56</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+#parse("$base/layout/layout-footer.vm")
+
+<script src="$base/assets/js/bootstrap-datepicker.min.js"></script>
+<script src="$base/assets/js/bootstrap-timepicker.min.js"></script>
+<script src="$base/assets/js/moment.min.js"></script>
+<script src="$base/assets/js/daterangepicker.min.js"></script>
+<script src="$base/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- inline scripts related to this page -->
+<script>
+    jQuery(function ($) {
+        var myTable =
+                $('#dynamic-table').DataTable({
+
+
+                    language: {
+                        "sProcessing": "处理中...",
+                        "sLengthMenu": "显示 _MENU_ 项结果",
+                        "sZeroRecords": "没有匹配结果",
+                        "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                        "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                        "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+                        "sInfoPostFix": "",
+                        "sSearch": "搜索:",
+                        "sUrl": "",
+                        "sEmptyTable": "表中数据为空",
+                        "sLoadingRecords": "载入中...",
+                        "sInfoThousands": ",",
+                        "oPaginate": {
+                            "sFirst": "首页",
+                            "sPrevious": "上页",
+                            "sNext": "下页",
+                            "sLast": "末页"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": 以升序排列此列",
+                            "sSortDescending": ": 以降序排列此列"
+                        }
+                    }
+
+                });
+
+        //表前的复选框
+//            myTable.on( 'select', function ( e, dt, type, index ) {
+//                if ( type === 'row' ) {
+//                    $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
+//                }
+//            } );
+//            myTable.on( 'deselect', function ( e, dt, type, index ) {
+//                if ( type === 'row' ) {
+//                    $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
+//                }
+//            } );
+//
+//            $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
+//                var th_checked = this.checked;//checkbox inside "TH" table header
+//                $('#dynamic-table').find('tbody > tr').each(function(){
+//                    var row = this;
+//                    if(th_checked) myTable.row(row).select();
+//                    else  myTable.row(row).deselect();
+//                });
+//            });
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        }).next().on(ace.click_event, function () {
+            $(this).prev().focus();
+        });
+    });
+
+
+</script>

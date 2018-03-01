@@ -1,0 +1,389 @@
+#set ($base = $rc.contextPath)
+
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('sidebar');
+        } catch (e) {
+        }
+    </script>
+
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+            <button class="btn btn-success">
+                <i class="ace-icon fa fa-signal"></i>
+            </button>
+
+            <button class="btn btn-info">
+                <i class="ace-icon fa fa-pencil"></i>
+            </button>
+
+            <button class="btn btn-warning">
+                <i class="ace-icon fa fa-users"></i>
+            </button>
+
+            <button class="btn btn-danger">
+                <i class="ace-icon fa fa-cogs"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+            <span class="btn btn-success"></span>
+
+            <span class="btn btn-info"></span>
+
+            <span class="btn btn-warning"></span>
+
+            <span class="btn btn-danger"></span>
+        </div>
+    </div><!-- /.sidebar-shortcuts -->
+
+    <ul class="nav nav-list">
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-desktop"></i>
+                <span class="menu-text">
+                                查询管理
+                            </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu nav-show">
+                <li class="">
+                    <a href="$base/query/user-info.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        用户信息查询
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="$base/query/user-tags.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        用户标签管理
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="$base/query/user-order.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        用户订单信息查询
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="$base/query/user-zw.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        装维工单查询
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text"> 功能管理 </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/function/menu.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        菜单配置
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="$base/function/zdhf.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        自动回复设置
+                    </a>
+                </li>
+                <li class="">
+                    <a href="$base/function/gg.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        广告设置
+                    </a>
+                </li>
+                <li class="">
+                    <a href="$base/function/hhy.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        公众号欢迎语设置
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-pencil-square-o"></i>
+                <span class="menu-text"> 数据统计
+                            </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <b class="arrow"></b>
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/statistics/order.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        业务订购查询
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/statistics/push.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        推送数据查询
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/statistics/button-click.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        菜单按钮点击数据统计
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/statistics/user-visit.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        用户访问数据统计
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/statistics/page-visit.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        页面访问数据统计
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/statistics/follow.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        每日关注人数统计
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text"> 二维码管理</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/ewm/create.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        二维码创建与管理
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/ewm/stat.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        二维码统计
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-list-alt"></i>
+                <span class="menu-text"> 素材和标签管理</span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/assets/image-words.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        图文素材
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/assets/image.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        图片素材
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li class="">
+                    <a href="$base/assets/tags.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        标签素材
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-tag"></i>
+                <span class="menu-text"> 推送管理 </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/push/image-words.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        图文推送管理
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="$base/push/template.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        模板消息推送管理
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="$base/push/custom.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        客服消息推送管理</a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-file-o"></i>
+
+                <span class="menu-text">
+                            活动管理
+                    </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/activity/manager.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        活动查询和配置
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="$base/activity/stat.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        活动效果查询
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-file-o"></i>
+                <span class="menu-text">
+                            跨公众号管理
+                    </span>
+
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu">
+                <li class="">
+                    <a href="$base/other/menu.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        菜单管理
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="$base/other/keywords.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        关键词管理
+                    </a>
+
+                    <b class="arrow"></b>
+                </li>
+
+                <li class="">
+                    <a href="$base/other/image-words.jhtml">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        图文推送管理
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="">
+            <a href="#">
+                <i class="menu-icon fa fa-tag"></i>
+                <span class="menu-text">  系统管理 </span>
+            </a>
+        </li>
+
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+           data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+
+
+<script>
+    jQuery(function ($) {
+        $('.nav-list a').on('click', function () {
+            console.log($(this).parent());
+
+        });
+
+        var uri = location.pathname;
+        $('.nav-list').find('a').each(function () {
+            if (uri == $(this).attr('href')) {
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+
+                $(this).parent().parent().parent().addClass('open');
+
+            }
+        });
+
+    });
+
+</script>

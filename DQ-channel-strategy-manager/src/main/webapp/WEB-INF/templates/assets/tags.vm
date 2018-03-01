@@ -1,0 +1,223 @@
+
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+
+    <div id="sidebar" class="sidebar responsive ace-save-state">#parse("/layout/layout-left.vm")</div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">首页</a>
+                    </li>
+
+                    <li>
+                        <a href="#">素材和标签管理</a>
+                    </li>
+                    <li class="active">标签素材</li>
+                </ul><!-- /.breadcrumb -->
+            </div>
+            <div class="page-content">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <form class="form-inline">
+                                <span class="grey bigger-110">查询条件</span>
+                                <input type="text" class="input-md" placeholder="标签名称">
+                                <select class="form-control" id="form-field-select-1">
+                                    <option value="">文案配置</option>
+                                </select>
+                                <button type="button" class="btn btn-primary btn-sm" id="search">
+                                    查询
+                                </button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    添加
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    编辑
+                                </button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" href="#new-group-modal">
+                                    新建分组
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--内容 部分-->
+                <div class="clearfix">
+                    <div class="pull-right tableTools-container"></div>
+                </div>
+                <div>
+                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </th>
+                            <th>名称</th>
+                            <th>分组</th>
+                            <th>更新时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="center">
+                                <label class="pos-rel">
+                                    <input type="checkbox" class="ace" />
+                                    <span class="lbl"></span>
+                                </label>
+                            </td>
+                            <td>微信支付</td>
+                            <td>文案配置</td>
+                            <td>2018-2-12 17:23:50</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" data-toggle="modal" href="#download-modal">源文件下载</a>
+                                <a class="btn btn-primary btn-sm" data-toggle="modal" href="#shengcha-modal">审查</a>
+                                <a class="btn btn-primary btn-sm">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div><!-- /.page-content -->
+        </div>
+    </div><!-- /.main-content -->
+
+    #parse("/layout/layout-footer.vm")
+
+
+    <!--新建分组-弹框-->
+    <div class="modal fade" id="new-group-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        备注名称
+                    </h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="col-md-12">
+                        <input type="text" id="form-field-1" placeholder="备注" class="col-md-12 ">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+    <!--审查-弹框-->
+    <div class="modal fade" id="shengcha-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        审查</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="col-md-12">
+                        版权所有:原创
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+    <!--下载-弹框-->
+    <div class="modal fade" id="download-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        源文件下载</h4>
+                </div>
+                <div class="modal-body clearfix">
+                    <div class="col-md-12">
+                        下载素材:流量告白日图文
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div>
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+
+    <!-- inline scripts related to this page -->
+    <script>
+        jQuery(function($) {
+            var myTable =
+                    $('#dynamic-table').DataTable({
+                        "paging":   false,
+                        "ordering": false,
+                        "info":     false,
+                        searching:false
+                    });
+
+            //表前的复选框
+            myTable.on( 'select', function ( e, dt, type, index ) {
+                if ( type === 'row' ) {
+                    $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
+                }
+            } );
+            myTable.on( 'deselect', function ( e, dt, type, index ) {
+                if ( type === 'row' ) {
+                    $( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
+                }
+            } );
+
+            $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
+                var th_checked = this.checked;//checkbox inside "TH" table header
+                $('#dynamic-table').find('tbody > tr').each(function(){
+                    var row = this;
+                    if(th_checked) myTable.row(row).select();
+                    else  myTable.row(row).deselect();
+                });
+            });
+
+        });
+
+
+    </script>

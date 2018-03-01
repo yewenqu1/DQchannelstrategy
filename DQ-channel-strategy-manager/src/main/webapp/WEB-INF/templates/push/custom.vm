@@ -1,0 +1,126 @@
+<script type="text/javascript">
+    try {
+        ace.settings.loadState('main-container')
+    } catch (e) {
+    }
+</script>
+
+<div id="sidebar" class="sidebar responsive ace-save-state">#parse("/layout/layout-left.vm")</div>
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+                <li><a href="#">推送管理</a></li>
+                <li class="active">模板消息推送管理</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="page-header">
+
+            </div>
+
+            <!--内容 部分-->
+
+            <div>
+                <table class="col-sm-12 tags-table">
+                    <tr style="border-bottom: 1px solid #666;">
+                        <td width="10%"><label>
+                            <input name="form-field-checkbox" type="checkbox" class="ace tags-check-all">
+                            <span class="lbl">全选</span>
+                        </label></td>
+                        <td width="80%" style="padding: 10px;">
+                            <button class="btn btn-light" id="up-tags">打标签</button>
+                            <button class="btn btn-light" id="black-tags">加入黑名单</button>
+                        </td>
+                        <td width="10%" style="padding: 10px;">
+
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #666;">
+                        <td><label>
+                            <input name="form-field-checkbox" type="checkbox" class="ace tags-checkbox">
+                            <span class="lbl"></span>
+                        </label></td>
+                        <td width="50%">
+                            <img src="/assets/images/avatars/user.jpg" style="float:left;margin-right: 5px;"/>
+                            <div style="display: inline-block">
+                                ywq<br/>
+                                无标签
+                            </div>
+
+                        </td>
+                        <td style="padding: 5px;">
+                            <button class="btn btn-primary" data-toggle="modal" href="#beizhu-modal">修改备注</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>
+                            <input name="form-field-checkbox" type="checkbox" class="ace tags-checkbox">
+                            <span class="lbl"></span>
+                        </label></td>
+                        <td width="50%">
+                            <img src="/assets/images/avatars/user.jpg" style="float:left;margin-right: 5px;"/>
+                            <div style="display: inline-block">
+                                鹏飞<br/>
+                                无标签
+                            </div>
+                        </td>
+                        <td style="padding: 5px;">
+                            <button class="btn btn-primary" data-toggle="modal" href="#beizhu-modal">修改备注</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+#parse("/layout/layout-footer.vm")
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+
+<!-- inline scripts related to this page -->
+<script>
+    jQuery(function ($) {
+        //全选
+        $('.tags-check-all').on('click',function () {
+            var isChecked = $('.tags-check-all').is(':checked');
+            if(isChecked){
+                $('.tags-table').find('input').each(function () {
+                    $(this).prop("checked",true);
+                });
+            }else{
+                $('.tags-table').find('input').each(function () {
+                    $(this).prop("checked",false);
+                });
+            }
+            taggleShowBTN(isChecked);
+        });
+        $('.tags-checkbox').change(function () {
+            var hasChecked = false;
+            $('.tags-table').find('input').each(function () {
+                if($(this).is(":checked")){
+                    hasChecked = true;
+                }
+            });
+            taggleShowBTN(hasChecked);
+        });
+
+    });
+
+    function taggleShowBTN(hasChecked){
+        if(hasChecked){
+            $('#up-tags').addClass('btn-primary').removeClass('btn-light');
+            $('#black-tags').addClass('btn-primary').removeClass('btn-light');
+        }else{
+            $('#up-tags').removeClass('btn-primary').addClass('btn-light');
+            $('#black-tags').removeClass('btn-primary').addClass('btn-light');
+        }
+    }
+</script>

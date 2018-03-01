@@ -1,0 +1,164 @@
+#set ($base = $rc.contextPath)
+<script type="text/javascript">
+    try {
+        ace.settings.loadState('main-container')
+    } catch (e) {
+    }
+</script>
+
+<div id="sidebar" class="sidebar responsive ace-save-state">#parse("/layout/layout-left.vm")</div>
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">首页</a>
+                </li>
+
+                <li>
+                    <a href="#">功能管理</a>
+                </li>
+                <li class="active">菜单配置</li>
+            </ul><!-- /.breadcrumb -->
+        </div>
+        <div class="page-content">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-xs-12">菜单未发布，请确认菜单编辑完成后点击“保存并发布”同步到手机，若停用菜单，请点击这里</div>
+                </div>
+            </div>
+
+            <!--内容 部分-->
+
+            <style>
+                .kuang {
+                    border: 1px solid #52bc8c;
+                    bottom: -1px;
+                    left: 44px;
+                    position: absolute;
+                    text-align: center;
+                    color: #52bc8c;
+                    line-height: 50px;
+                    cursor: pointer
+                }
+            </style>
+            <div class="row">
+                <div class="col-xs-12">
+                    <!--左边菜单-->
+                    <div style="width: 322px;float:left;border: 1px solid #cccccc;">
+                        <div style="width: 100%;height: 64px;float: left">
+                            <div style="background: url('$base/assets/images/bg_mobile_head_default3a7b38.png') no-repeat;width: 100%;height: 64px;">
+                            </div>
+                        </div>
+                        <div style="width: 320px;height: 430px;float: left;position: relative">
+                            <div style="background: url('$base/assets/images/bg_mobile_foot_default3a7b38.png') no-repeat bottom;width: 100%;height:100%;">
+                            </div>
+                            <div id="menu-list" class="kuang" style="width: 276px;height: 50px;">
+                                <div class="" style="width:100%;">
+                                    <i class="ace-icon glyphicon glyphicon-plus"></i>
+                                    添加菜单
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--右边-->
+                    <div id="add-menu" style="width: 60%;height: 496px;float: left;margin-left:10px;border: 1px solid #cccccc;
+background: #f4f5f9;display: none">
+                        <div class="col-md-12" style="padding-bottom: 10px;">
+                            <div class="" style="height: 50px;line-height: 50px;border-bottom: 1px solid #cccccc;">
+                                <span>菜单名称</span>
+                                <span style="display: inline-block;float: right">
+                                        <button class="btn btn-sm btn-primary">菜单删除</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 菜单名称 </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="form-field-1" placeholder="菜单名称" class="col-xs-10 col-sm-5">
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label no-padding-right" for="form-field-1"> 菜单内容 </label>
+                                <div class="radio">
+                                    <label>
+                                        <input name="form-field-radio" type="radio" class="ace"
+                                               onchange="showWhat('message')" checked="checked">
+                                        <span class="lbl"> 发送消息</span>
+                                    </label>
+                                    <label>
+                                        <input name="form-field-radio" type="radio" class="ace"
+                                               onchange="showWhat('link')">
+                                        <span class="lbl"> 跳转网页</span>
+                                    </label>
+                                    <label>
+                                        <input name="form-field-radio" type="radio" class="ace"
+                                               onchange="showWhat('xiaocx')">
+                                        <span class="lbl"> 跳转小程序</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div id="content" class="col-md-12">
+                                <div id="message"
+                                     style="width: 100%;height:200px; border: 1px solid #e7e7eb;background: white">
+                                    <div style="overflow: hidden;border-bottom: 1px solid #e7e7e">
+                                        <img src="$base/assets/images/1.png" width="522" height="285">
+                                    </div>
+                                </div>
+                                <div id="link"
+                                     style="width: 100%; border: 1px solid #e7e7eb;background: white;display: none">
+                                    <div class="form-horizontal" style="padding: 20px">
+                                        <h5>订阅者点击该子菜单会跳到以下链接</h5>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label no-padding-right" for="form-field-1">
+                                                页面地址 </label>
+                                            <div class="col-sm-9">
+                                                <input type="text" id="form-field-1" placeholder="页面地址"
+                                                       class="input-large">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="xiaocx"
+                                     style="width: 100%;height:200px; border: 1px solid #e7e7eb;background: white;display: none">
+                                    <div style="overflow: hidden;border-bottom: 1px solid #e7e7e">
+                                        <div style="width: 100%;text-align: center;padding: 70px 0;margin-bottom: 20px;">
+                                            自定义菜单可跳转已绑定的小程序，本公众号尚未绑定小程序。<br/>
+                                            <button class="btn btn-sm btn-primary">前往绑定</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
+
+#parse("/layout/layout-footer.vm")
+
+<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+    <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+</a>
+
+<!-- inline scripts related to this page -->
+<script>
+    jQuery(function ($) {
+        $('#menu-list').on('click', function () {
+            $('#add-menu').show();
+        });
+    });
+    function showWhat(str) {
+        $("#message").hide();
+        $("#link").hide();
+        $("#xiaocx").hide();
+        $("#" + str).show();
+    }
+</script>

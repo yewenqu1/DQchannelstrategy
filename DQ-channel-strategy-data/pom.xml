@@ -9,10 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>DQ-channel-strategy-data</artifactId>
-    <description>封装各类数据源的连接</description>
+    <description>数据支持</description>
 
     <dependencies>
-
 
         <!-- hibernate -->
         <dependency>
@@ -25,6 +24,7 @@
         </dependency>
 
         <!-- spring -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -33,17 +33,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -58,6 +51,12 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+
 
         <dependency>
             <groupId>junit</groupId>
