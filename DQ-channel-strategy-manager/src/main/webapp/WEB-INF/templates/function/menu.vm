@@ -135,12 +135,59 @@ background: #f4f5f9;display: none">
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
+                </div>
+                <div style="clear: both"></div>
+                <div style="width: 100%;padding-top: 20px;padding: 15px;
+    text-align: right;">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" href="#success-modal">
+                        保存并发布
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                    </button>
                 </div>
             </div>
         </div><!-- /.page-content -->
     </div>
 </div><!-- /.main-content -->
+
+
+<!--保存成功-弹框-->
+<div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    发布确认
+                </h4>
+            </div>
+            <div class="modal-body clearfix">
+                <div class="col-md-12">
+                    <div style="float:left ">
+
+                    </div>
+                    <div style="float:left ">
+                        <h5> <i class="ace-icon glyphicon glyphicon-ok bigger-110"></i>
+                        &nbsp;&nbsp;发布成功后会覆盖原版本，且将在24小时内对所有用户生效，确认发布？</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                    确定
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
 
 #parse("/layout/layout-footer.vm")
 

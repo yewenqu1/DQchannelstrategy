@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="$base/assets/css/bootstrap-datetimepicker.min.css"/>
 
 <div id="sidebar" class="sidebar responsive ace-save-state">
-    #parse("$base/layout/layout-left.vm")
+    #parse("/layout/layout-left.vm")
 </div>
 <div class="main-content">
     <div class="main-content-inner">
@@ -87,7 +87,7 @@
     </div>
 </div><!-- /.main-content -->
 
-#parse("$base/layout/layout-footer.vm")
+#parse("/layout/layout-footer.vm")
 
 <script src="$base/assets/js/bootstrap-datepicker.min.js"></script>
 <script src="$base/assets/js/bootstrap-timepicker.min.js"></script>
